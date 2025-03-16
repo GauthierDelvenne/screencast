@@ -27,7 +27,6 @@ Validator::check([
 // Vérification du $token de l'input par rapport au $token de la session
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || $_SESSION['token'] !== $_POST['_csrf']) { // La condition ici est que session$token n’est pas = input$token
     Response::abort();
-
 };
 unset($_SESSION['token']);
 
