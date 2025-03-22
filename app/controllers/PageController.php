@@ -8,5 +8,4 @@ class PageController
     {
         echo 'welcome';
     }
-
 }

@@ -2,13 +2,8 @@
 
 namespace Tecgdcs;
 
-
-<<<<<<< Updated upstream
 use Tecgdcs\Exceptions\ValidationRuleNotFoundException;
-require __DIR__.'/helpers/function.php';
 
-=======
->>>>>>> Stashed changes
 class Validator
 {
     public static function required(string $field_name): bool
@@ -100,50 +95,37 @@ class Validator
         return true;
     }
 
-    public static function check(array $constraints)
+    public static function check(array $constraints): void
     {
         try {
             self::parse_constraints($constraints);
-<<<<<<< Updated upstream
-        } catch (ValidationRuleNotFoundException $e) { // On a défini des exceptions
-            die($e->getMessage());
-=======
         } catch (ValidationRuleNotFoundException $e) {
             exit($e->getMessage());
->>>>>>> Stashed changes
         }
 
         if (isset($_SESSION['errors'])) {
             $_SESSION['old'] = $_REQUEST;
-<<<<<<< Updated upstream
-            header('Location: /index.php');
-            exit;
-=======
             back();
->>>>>>> Stashed changes
         }
     }
 
+    /**
+     * @throws ValidationRuleNotFoundException
+     */
     private static function parse_constraints(array $constraints): void
     {
-        $param1 = '';
-        foreach ($constraints as $field_name => $rules) {
-            $array_rules = explode('|', $rules);
-            foreach ($array_rules as $rule) {
-            \info($rule);
-                if (str_contains($rule,':')){ // cherche une rule ou il y a => :
-                    [$rule, $param1] = explode(':', $rule); // explode same:email/in_collection:countries en lui ajoute un nouveau parametre param1
+        $method = $param1 = $param2 = '';
+        foreach ($constraints as $field_name => $constraint) {
+            $array_rules = explode('|', $constraint);
+            foreach ($array_rules as $method) {
+                if (str_contains($method, ':')) {
+                    [$method, $param1] = explode(':', $method);
                 }
-<<<<<<< Updated upstream
-                if (!method_exists(__CLASS__, $rule)){
-                    throw new ValidationRuleNotFoundException($rule.' n’existe pas');
-=======
 
                 if (! method_exists(__CLASS__, $method)) {
                     throw new ValidationRuleNotFoundException($method);
->>>>>>> Stashed changes
                 }
-                self::$rule($field_name, $param1);
+                self::$method($field_name, $param1, $param2);
             }
         }
     }

@@ -4,10 +4,6 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< Updated upstream
-    "content-hash": "f42754997f020f9ec288c04776259bb6",
-    "packages": [],
-=======
     "content-hash": "17e7369c76526cc7d033d3ca040bff28",
     "packages": [
         {
@@ -77,7 +73,6 @@
             "time": "2025-03-14T22:31:42+00:00"
         }
     ],
->>>>>>> Stashed changes
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
